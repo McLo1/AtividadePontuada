@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestController
-public class WelcomeController {
+public class WelcomeController { //Endpoint Welcome para tela inicial da API
 
     @RequestMapping("/")
     public String Welcome(){

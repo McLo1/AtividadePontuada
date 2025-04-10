@@ -9,11 +9,13 @@ import java.util.Set;
 @Entity
 public class Funcionarios {
 
+    //Classe Usuario
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Insira o nome do Funcionario")
+    @NotBlank(message = "Insira o nome do Funcionario") //Validações com NotBlank para que o usuario não deixe as informações em branco
     private String nome;
     @NotBlank(message = "Insira o CPF do Funcionario")
     private String cpf;
@@ -31,12 +33,13 @@ public class Funcionarios {
 
     private double salario;
     @NotBlank(message = "Insira o e-mail do Funcionario")
-    @Email(message = "Insira um e-mail valido!")
+    @Email(message = "Insira um e-mail valido!") //Validação para que não seja registrado um E-mail Invalido
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
+    //Construtores, Getters e Setters
 
     public Funcionarios() {
     }

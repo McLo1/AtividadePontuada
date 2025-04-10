@@ -17,11 +17,11 @@ public class FuncionarioService {
 
     public List<Funcionarios> listarTodos(){
         return funcionarioRepository.findAll();
-    }
+    } //Logica para Listar os Usuarios Salvos
 
     public Funcionarios salvar(@Valid Funcionarios funcionarios){
-        if (funcionarioRepository.findByEmail(funcionarios.getEmail()).isPresent()){
-            throw new RuntimeException("Um usuario Já possui Esse e-mail");
+        if (funcionarioRepository.findByEmail(funcionarios.getEmail()).isPresent()){ //validação com E-mail, não é possivel cadastrar um Usuario com o mesmo E-mail já utilizado
+            throw new RuntimeException("Um usuario Já possui Esse e-mail");  //Logica para Cadastrar Novos Usuarios
         }
         return funcionarioRepository.save(funcionarios);
     }
@@ -41,14 +41,14 @@ public class FuncionarioService {
         funcionarioAtualizar.setEmail(funcionarios.getEmail());
         funcionarioAtualizar.setEndereco(funcionarios.getEndereco());
 
-        return funcionarioRepository.save(funcionarioAtualizar);
+        return funcionarioRepository.save(funcionarioAtualizar); //Logica para Atualizar um Usuario Já cadastrado
     }
 
     public void deletar(long id){
         Funcionarios funcionarioAtualizar = funcionarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Funcionario não cadastrado"));
 
-        funcionarioRepository.deleteById(id);
+        funcionarioRepository.deleteById(id); //Logica para deletar um Funcionario
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.atividadePontuada.Exceptions;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,16 +23,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<Map<String, Object>> handlerNoResourceFoundException(NoResourceFoundException erro){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Map.of("Erro: " , "Recurso não encontrado " + "HTTP: " + HttpStatus.BAD_REQUEST));
+                .body(Map.of("Erro: " , "Recurso não encontrado"));
 
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handlerMethodArgumentNotValidException(MethodArgumentNotValidException erro){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Map.of("Erro: " , "Complete as Informações do Funcionario " + "HTTP: " + HttpStatus.BAD_REQUEST));
+                .body(Map.of("Erro: " , "Complete as Informações do Funcionario"));
 
     }
 
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Map<String, Object>> handlerConstraintViolationException(ConstraintViolationException erro){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("Erro: " , "Erro na validação" ));
+    }
 
 }
