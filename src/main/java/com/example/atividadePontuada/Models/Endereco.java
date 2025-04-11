@@ -2,22 +2,24 @@ package com.example.atividadePontuada.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "endereço")
 public class Endereco {
 
-    //
+    //Entidade Endereço
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotBlank(message = "Insira o logradouro do Endereço")
+
+    //Variaveis do Endereço do Funcionario
     private String logradouro;
-    @NotBlank(message = "Insira o número do Endereço")
+
     private String numero;
-    @NotBlank(message = "Insira o complemento do Endereço")
+
     private String complemento;
-    @NotBlank(message = "Insira a cidade do Endereço")
+
     private String Cidade;
 
     public Endereco() {
